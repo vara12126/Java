@@ -1,0 +1,9 @@
+Architecture,QueueSize,InsertTimeMs,ExtractTimeMs,InsertComplexity,ExtractComplexity
+"PriorityQueue (Min-Heap)",1000,2.6145,13.2936,"O(log N)","O(log N)"
+"Multi-Level Queue (5 FIFO)",1000,0.3319,0.6343,"O(1)","O(1)"
+"Sorted LinkedList",1000,10.2850,0.2193,"O(N)","O(1)"
+"PriorityQueue (Min-Heap)",10000,2.1205,8.2229,"O(log N)","O(log N)"
+"Multi-Level Queue (5 FIFO)",10000,1.5289,1.2556,"O(1)","O(1)"
+"Sorted LinkedList",10000,401.0175,1.0968,"O(N)","O(1)"
+"PriorityQueue (Min-Heap)",100000,10.7797,53.0293,"O(log N)","O(log N)"
+"Multi-Level Queue (5 FIFO)",100000,4.0300,12.4218,"O(1)","O(1)"
