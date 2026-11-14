@@ -1,0 +1,13 @@
+Transaction_ID,Amount,Status,Latency_Ms,Clearing_Fee,Message
+ACH-TX-1001,1250.00,SUCCESS,42,1.50,"Clearing settled through Fedwire"
+ACH-TX-1002,4800.50,SUCCESS,62,2.40,"Clearing settled through Fedwire"
+ACH-TX-1003,2500000.00,REJECTED_COMPLIANCE,51,0.00,"Blocked: Exceeds single-batch AML threshold ($1,000,000.00)"
+ACH-TX-1004,890.00,SUCCESS,32,1.50,"Clearing settled through Fedwire"
+ACH-TX-1005,15200.00,SUCCESS,70,7.60,"Clearing settled through Fedwire"
+ACH-TX-1006,0.00,TIMEOUT_BREACH,250,0.00,"SLA Violated: Response exceeded 250ms timeout threshold"
+ACH-TX-1007,7450.00,SUCCESS,46,3.73,"Clearing settled through Fedwire"
+ACH-TX-1008,0.00,GATEWAY_FAILURE,0,0.00,"Downstream gateway aborted: Federal ACH Gateway timeout/connection reset for ACH-TX-1008"
+ACH-TX-1009,18500.00,SUCCESS,82,9.25,"Clearing settled through Fedwire"
+ACH-TX-1010,610.25,SUCCESS,36,1.50,"Clearing settled through Fedwire"
+ACH-TX-1011,620000.00,SUCCESS,91,310.00,"Clearing settled through Fedwire"
+ACH-TX-1012,4100.00,SUCCESS,452,2.05,"Clearing settled through Fedwire"

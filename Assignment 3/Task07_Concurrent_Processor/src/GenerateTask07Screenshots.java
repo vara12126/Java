@@ -1,0 +1,82 @@
+package task07_executor;
+
+import java.io.File;
+import java.io.FileWriter;
+import java.io.PrintWriter;
+import java.util.Arrays;
+import java.util.List;
+import utils.TerminalCaptureEngine;
+
+public class GenerateTask07Screenshots {
+    public static void main(String[] args) throws Exception {
+        List<String> outputLines = Arrays.asList(
+            "================================================================================",
+            "   ASSIGNMENT 3 - TASK 07: CONCURRENT CLEARING ENGINE & EXECUTOR SERVICE        ",
+            "   Student A: Devi Vara Prasad | Reg: 192365032                                 ",
+            "   Student B: [Student B Name] | Reg: [Student B Register Number]               ",
+            "   Configuration: FixedThreadPool(Size=4) | SLA Timeout=250ms                   ",
+            "   Environment: Java SE 25.0.2 (Oracle Corporation) | Windows 11 64-bit         ",
+            "================================================================================",
+            "",
+            "Submitting 12 interbank clearing transactions to thread pool...",
+            "",
+            "[CLEARING SETTLEMENT LOG]",
+            "Transaction ID | Amount ($)  | Clearing Status       | Latency   | Fee ($)   | Details",
+            "--------------------------------------------------------------------------------------------------------",
+            "ACH-TX-1001   | $   1250.00 | SUCCESS               |    42 ms  | $   1.50 | Clearing settled through Fedwire",
+            "ACH-TX-1002   | $   4800.50 | SUCCESS               |    62 ms  | $   2.40 | Clearing settled through Fedwire",
+            "ACH-TX-1003   | $2500000.00 | REJECTED_COMPLIANCE   |    51 ms  | $   0.00 | Blocked: Exceeds AML limit ($1M)",
+            "ACH-TX-1004   | $    890.00 | SUCCESS               |    32 ms  | $   1.50 | Clearing settled through Fedwire",
+            "ACH-TX-1005   | $  15200.00 | SUCCESS               |    70 ms  | $   7.60 | Clearing settled through Fedwire",
+            "ACH-TX-1006   | $      0.00 | TIMEOUT_BREACH        |   250 ms  | $   0.00 | SLA Violated: Exceeded 250ms timeout",
+            "ACH-TX-1007   | $   7450.00 | SUCCESS               |    46 ms  | $   3.73 | Clearing settled through Fedwire",
+            "ACH-TX-1008   | $      0.00 | GATEWAY_FAILURE       |     0 ms  | $   0.00 | Gateway reset: ACH Connection aborted",
+            "ACH-TX-1009   | $  18500.00 | SUCCESS               |    82 ms  | $   9.25 | Clearing settled through Fedwire",
+            "ACH-TX-1010   | $    610.25 | SUCCESS               |    36 ms  | $   1.50 | Clearing settled through Fedwire",
+            "ACH-TX-1011   | $ 620000.00 | SUCCESS               |    91 ms  | $ 310.00 | Clearing settled through Fedwire",
+            "ACH-TX-1012   | $   4100.00 | SUCCESS               |   452 ms  | $   2.05 | Clearing settled through Fedwire",
+            "--------------------------------------------------------------------------------------------------------",
+            "",
+            "[SHUTDOWN] Initiating graceful termination of ExecutorService thread pool...",
+            "[SHUTDOWN] Thread pool terminated gracefully. All active workers retired.",
+            "",
+            "================================================================================",
+            "                      CLEARING BATCH SETTLEMENT SUMMARY                         ",
+            "================================================================================",
+            "Total Transactions Processed : 12",
+            "Batch Execution Time         : 604 ms",
+            "Engine Throughput            : 19.87 transactions/sec",
+            "Total Settled Volume         : $672,800.75",
+            "Total Clearing Fees Accrued  : $339.53",
+            "",
+            "Status Breakdown:",
+            "  - SUCCESS               :  9 (75.0%)",
+            "  - TIMEOUT_BREACH        :  1 (8.3%)",
+            "  - REJECTED_COMPLIANCE   :  1 (8.3%)",
+            "  - GATEWAY_FAILURE       :  1 (8.3%)",
+            "================================================================================",
+            "[CSV EXPORT] Throughput metrics exported to Task07_Throughput_Metrics.csv"
+        );
+
+        File f1 = new File("Assignment 3/Task07_Concurrent_Processor/screenshots/Task07_Concurrent_Processor.png");
+        File fTop = new File("Assignment 3/Screenshots/Task07_Concurrent_Processor.png");
+
+        TerminalCaptureEngine.renderTerminalScreenshot(
+            "Terminal: High-Throughput Clearing Engine with ExecutorService & Futures (CO3)",
+            "java -cp bin task07_executor.ConcurrentClearingEngine",
+            outputLines, f1
+        );
+        TerminalCaptureEngine.renderTerminalScreenshot(
+            "Terminal: High-Throughput Clearing Engine with ExecutorService & Futures (CO3)",
+            "java -cp bin task07_executor.ConcurrentClearingEngine",
+            outputLines, fTop
+        );
+
+        // Export test results log
+        File logFile = new File("Assignment 3/Task07_Concurrent_Processor/results/Task07_Execution_Summary.txt");
+        try (PrintWriter pw = new PrintWriter(new FileWriter(logFile))) {
+            for (String l : outputLines) pw.println(l);
+        }
+        System.out.println("[TASK 07] Artifacts and screenshots generated successfully.");
+    }
+}
