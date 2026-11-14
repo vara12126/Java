@@ -1,0 +1,6 @@
+Operation,OriginalTimeMs,RedesignedTimeMs,SpeedupFactor,OriginalComplexity,RedesignedComplexity
+"Admit (10k)",4.8019,9.7204,0.49,"O(log N)","O(1)"
+"Lookup (50k)",3074.3150,16.1260,190.64,"O(N)","O(1)"
+"Update Priority (2k)",194.8806,3.1280,62.30,"O(N) + O(log N)","O(1)"
+"Aging Sweep (30 min)",113.2729,2.7106,41.79,"O(N^2)","O(K)"
+"Extract Next (10k)",13.3678,7.1477,1.87,"O(log N)","O(1)"
