@@ -1,0 +1,17 @@
+classDiagram
+    class ParkingFacility {
+        -String name
+        -ParkingSlot[][] grid
+        -Map~String, ParkingTicket~ activeTicketsByReg
+        -Map~String, ParkingTicket~ activeTicketsById
+        -List~ParkingTicket~ settledTickets
+        -BigDecimal dailyTotalCollection
+        +ParkingFacility(name, floorCapacities, evSlotsPerFloor)
+        +parkVehicle(vehicle, passType, needsEv, entryTime) ParkingTicket
+        +exitVehicle(identifier, exitTime) ParkingTicket
+        +displayGrid() void
+        +getActiveTicketsList() List~ParkingTicket~
+        +getDailyTotalCollection() BigDecimal
+        +getTotalAvailableSlots() int
+        +getName() String
+    }

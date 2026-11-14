@@ -1,0 +1,77 @@
+classDiagram
+    direction TB
+
+    class Vehicle {
+        <<abstract>>
+        #String registrationNumber
+        #String brand
+        #String vehicleType
+        +getRegistrationNumber() String
+        +getBrand() String
+        +getVehicleType() String
+        +getHourlyRate()* double
+    }
+
+    class TwoWheeler {
+        +getHourlyRate() double
+    }
+
+    class Car {
+        +getHourlyRate() double
+    }
+
+    class ElectricCar {
+        -boolean chargingRequired
+        +getHourlyRate() double
+        +getChargingRatePerHour() double
+    }
+
+    class ParkingSlot {
+        -int floor
+        -int slotNumber
+        -boolean evChargingCapable
+        -boolean occupied
+        -Vehicle parkedVehicle
+        +assignVehicle(Vehicle) void
+        +vacate() Vehicle
+    }
+
+    class ParkingTicket {
+        -String ticketId
+        -String registrationNumber
+        -int floor
+        -int slot
+        -LocalDateTime entryTime
+        -LocalDateTime exitTime
+        -BigDecimal netFeePaid
+        -boolean active
+        +processExit(LocalDateTime, double, double) void
+    }
+
+    class ParkingFacility {
+        -String name
+        -ParkingSlot[][] grid
+        -Map activeTicketsByReg
+        -Map activeTicketsById
+        -BigDecimal dailyTotalCollection
+        +parkVehicle(Vehicle, PassType, boolean, LocalDateTime) ParkingTicket
+        +exitVehicle(String, LocalDateTime) ParkingTicket
+        +displayGrid() void
+    }
+
+    class PassType {
+        <<enumeration>>
+        VISITOR
+        STUDENT_MONTHLY
+        STAFF_MONTHLY
+        VISITOR_ONE_DAY
+    }
+
+    Vehicle <|-- TwoWheeler
+    Vehicle <|-- Car
+    Car <|-- ElectricCar
+
+    ParkingFacility "1" *-- "many" ParkingSlot : contains grid
+    ParkingFacility "1" o-- "many" ParkingTicket : tracks active & settled
+    ParkingSlot "1" o-- "0..1" Vehicle : hosts
+    ParkingTicket --> PassType : references

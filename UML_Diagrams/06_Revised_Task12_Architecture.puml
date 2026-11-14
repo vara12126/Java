@@ -1,0 +1,77 @@
+@startuml 06_Revised_Task12_Architecture
+skinparam classAttributeIconSize 0
+
+interface PricingRule {
+    + {abstract} computeFee(v : Vehicle, in : LocalDateTime, out : LocalDateTime) : BigDecimal
+}
+
+class HourlyPricingRule {
+    + computeFee(v : Vehicle, in : LocalDateTime, out : LocalDateTime) : BigDecimal
+}
+
+class EBikeFlatPricingRule {
+    - flatFee : BigDecimal
+    + computeFee(v : Vehicle, in : LocalDateTime, out : LocalDateTime) : BigDecimal
+}
+
+class DeliveryVanTimeWindowRule {
+    - {static} PEAK_START : LocalTime
+    - {static} PEAK_END : LocalTime
+    - baseRatePerHour : double
+    - peakMultiplier : double
+    + computeFee(v : Vehicle, in : LocalDateTime, out : LocalDateTime) : BigDecimal
+}
+
+PricingRule <|.. HourlyPricingRule
+PricingRule <|.. EBikeFlatPricingRule
+PricingRule <|.. DeliveryVanTimeWindowRule
+
+interface Pass {
+    + {abstract} getPassId() : String
+    + {abstract} getPassType() : String
+    + {abstract} isValid(t : LocalDateTime) : boolean
+    + {abstract} applyDiscount(fee : BigDecimal) : BigDecimal
+}
+
+class MonthlyPass {
+    - role : HolderRole
+    - validFrom : LocalDateTime
+    - validUntil : LocalDateTime
+    + isValid(t : LocalDateTime) : boolean
+    + applyDiscount(fee : BigDecimal) : BigDecimal
+}
+
+class OneDayPass {
+    - issuedAt : LocalDateTime
+    - expiresAt : LocalDateTime
+    + isValid(t : LocalDateTime) : boolean
+    + applyDiscount(fee : BigDecimal) : BigDecimal
+}
+
+Pass <|.. MonthlyPass
+Pass <|.. OneDayPass
+
+abstract class Vehicle {
+    # registrationNumber : String
+    # vehicleType : String
+    # pricingRule : PricingRule
+    + computeFee(in : LocalDateTime, out : LocalDateTime) : BigDecimal
+    + {abstract} getBaseHourlyRate() : double
+}
+
+Vehicle --> PricingRule : Strategy Pattern
+Vehicle <|-- EBike
+Vehicle <|-- DeliveryVan
+Vehicle <|-- Car
+Vehicle <|-- TwoWheeler
+
+class ExtendedParkingFacility {
+    - grid : ParkingSlot[][]
+    - activeSessions : Map<String, ActiveSession>
+    + park(v : Vehicle, p : Pass, in : LocalDateTime) : ActiveSession
+    + exit(reg : String, out : LocalDateTime) : BigDecimal
+    + displayOccupancy() : void
+}
+
+ExtendedParkingFacility "1" *-- "5 floors" ParkingSlot
+@enduml

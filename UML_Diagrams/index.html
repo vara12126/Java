@@ -1,0 +1,153 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>CSA09 Campus Smart-Parking System - UML Diagrams</title>
+    <script type="module">
+        import mermaid from 'https://cdn.jsdelivr.net/npm/mermaid@10/dist/mermaid.esm.min.mjs';
+        mermaid.initialize({ startOnLoad: true, theme: 'default' });
+    </script>
+    <style>
+        body { font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif; margin: 40px; background-color: #f8f9fa; color: #212529; }
+        h1 { border-bottom: 2px solid #007bff; padding-bottom: 10px; color: #0056b3; }
+        h2 { margin-top: 40px; color: #343a40; border-left: 4px solid #007bff; padding-left: 10px; }
+        .diagram-container { background: white; padding: 25px; border-radius: 8px; box-shadow: 0 4px 6px rgba(0,0,0,0.1); margin-bottom: 30px; }
+        pre { background: #e9ecef; padding: 15px; border-radius: 5px; font-size: 13px; overflow-x: auto; }
+    </style>
+</head>
+<body>
+    <h1>Campus Smart-Parking System - UML Visual Architecture</h1>
+    <p>This viewer renders all system architecture diagrams natively in SVG format.</p>
+
+    <h2>1. Overall System Class Diagram</h2>
+    <div class="diagram-container">
+        <pre class="mermaid">
+classDiagram
+    direction TB
+    class Vehicle {
+        <<abstract>>
+        #String registrationNumber
+        #String brand
+        #String vehicleType
+        +getHourlyRate()* double
+    }
+    class TwoWheeler { +getHourlyRate() double }
+    class Car { +getHourlyRate() double }
+    class ElectricCar { -boolean chargingRequired; +getChargingRatePerHour() double }
+    class ParkingSlot { -int floor; -int slotNumber; -boolean evChargingCapable; -boolean occupied }
+    class ParkingTicket { -String ticketId; -BigDecimal netFeePaid; -boolean active }
+    class ParkingFacility { -ParkingSlot[][] grid; -Map activeTicketsByReg; +parkVehicle() ParkingTicket; +exitVehicle() ParkingTicket }
+
+    Vehicle <|-- TwoWheeler
+    Vehicle <|-- Car
+    Car <|-- ElectricCar
+    ParkingFacility *-- ParkingSlot
+    ParkingFacility o-- ParkingTicket
+    ParkingSlot o-- Vehicle
+        </pre>
+    </div>
+
+    <h2>2. Vehicle Inheritance Hierarchy</h2>
+    <div class="diagram-container">
+        <pre class="mermaid">
+classDiagram
+    direction TB
+    class Vehicle { <<abstract>> #String registrationNumber; #String brand; #String vehicleType; +abstract getHourlyRate() double }
+    class TwoWheeler { -boolean hasHelmetStorage; +getHourlyRate() double }
+    class Car { #int seatingCapacity; +getHourlyRate() double }
+    class ElectricCar { -double batteryCapacityKWh; -boolean chargingRequired; +getHourlyRate() double }
+
+    Vehicle <|-- TwoWheeler : Single / Hierarchical
+    Vehicle <|-- Car : Hierarchical
+    Car <|-- ElectricCar : Multilevel
+        </pre>
+    </div>
+
+    <h2>3. Parking Ticket Class Diagram</h2>
+    <div class="diagram-container">
+        <pre class="mermaid">
+classDiagram
+    class ParkingTicket {
+        -String ticketId
+        -String registrationNumber
+        -int floor
+        -int slot
+        -LocalDateTime entryTime
+        -LocalDateTime exitTime
+        -BigDecimal baseFee
+        -BigDecimal evChargingFee
+        -BigDecimal discountAmount
+        -BigDecimal netFeePaid
+        -boolean active
+        +processExit(exitTime, hourlyRate, evRate) void
+    }
+        </pre>
+    </div>
+
+    <h2>4. Parking Facility Class Diagram</h2>
+    <div class="diagram-container">
+        <pre class="mermaid">
+classDiagram
+    class ParkingFacility {
+        -String name
+        -ParkingSlot[][] grid
+        -Map activeTicketsByReg
+        -Map activeTicketsById
+        -BigDecimal dailyTotalCollection
+        +parkVehicle(Vehicle, PassType, boolean, LocalDateTime) ParkingTicket
+        +exitVehicle(String, LocalDateTime) ParkingTicket
+        +displayGrid() void
+        +getActiveTicketsList() List
+    }
+        </pre>
+    </div>
+
+    <h2>5. Interface and Abstraction Architecture</h2>
+    <div class="diagram-container">
+        <pre class="mermaid">
+classDiagram
+    direction TB
+    class Chargeable { <<interface>> +calculateFee(int hours)* double; +calculateDiscountedFee() double; +getCurrencySymbol()$ String }
+    class Trackable { <<interface>> +getTrackingTag()* String; +logMovement() void }
+    class Vehicle { <<abstract>> #String registrationNumber; +getDesignatedParkingZone()* String }
+    class TwoWheeler { +calculateFee() double }
+    class Car { +calculateFee() double }
+    class ElectricCar { +calculateFee() double }
+
+    Chargeable <|.. Vehicle
+    Trackable <|.. Vehicle
+    Vehicle <|-- TwoWheeler
+    Vehicle <|-- Car
+    Car <|-- ElectricCar
+        </pre>
+    </div>
+
+    <h2>6. Revised Task 12 Design Challenge Architecture (Strategy Pattern)</h2>
+    <div class="diagram-container">
+        <pre class="mermaid">
+classDiagram
+    direction TB
+    class PricingRule { <<interface>> +computeFee(Vehicle, LocalDateTime, LocalDateTime)* BigDecimal }
+    class HourlyPricingRule { +computeFee() BigDecimal }
+    class EBikeFlatPricingRule { +computeFee() BigDecimal }
+    class DeliveryVanTimeWindowRule { +computeFee() BigDecimal }
+    PricingRule <|.. HourlyPricingRule
+    PricingRule <|.. EBikeFlatPricingRule
+    PricingRule <|.. DeliveryVanTimeWindowRule
+
+    class Pass { <<interface>> +isValid(LocalDateTime)* boolean; +applyDiscount(BigDecimal)* BigDecimal }
+    class MonthlyPass { -HolderRole role; +applyDiscount() BigDecimal }
+    class OneDayPass { -LocalDateTime expiresAt; +applyDiscount() BigDecimal }
+    Pass <|.. MonthlyPass
+    Pass <|.. OneDayPass
+
+    class Vehicle { <<abstract>> #PricingRule pricingRule; +computeFee() BigDecimal }
+    Vehicle --> PricingRule : Strategy Pattern
+    Vehicle <|-- EBike
+    Vehicle <|-- DeliveryVan
+    Vehicle <|-- Car
+    Vehicle <|-- TwoWheeler
+        </pre>
+    </div>
+</body>
+</html>

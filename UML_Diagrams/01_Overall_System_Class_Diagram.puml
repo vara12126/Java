@@ -1,0 +1,76 @@
+@startuml 01_Overall_System_Class_Diagram
+skinparam classAttributeIconSize 0
+
+abstract class Vehicle {
+    # registrationNumber : String
+    # brand : String
+    # vehicleType : String
+    + getRegistrationNumber() : String
+    + getBrand() : String
+    + getVehicleType() : String
+    + {abstract} getHourlyRate() : double
+}
+
+class TwoWheeler {
+    + getHourlyRate() : double
+}
+
+class Car {
+    + getHourlyRate() : double
+}
+
+class ElectricCar {
+    - chargingRequired : boolean
+    + getHourlyRate() : double
+    + getChargingRatePerHour() : double
+}
+
+Vehicle <|-- TwoWheeler
+Vehicle <|-- Car
+Car <|-- ElectricCar
+
+class ParkingSlot {
+    - floor : int
+    - slotNumber : int
+    - evChargingCapable : boolean
+    - occupied : boolean
+    - parkedVehicle : Vehicle
+    + assignVehicle(v : Vehicle) : void
+    + vacate() : Vehicle
+}
+
+class ParkingTicket {
+    - ticketId : String
+    - registrationNumber : String
+    - floor : int
+    - slot : int
+    - entryTime : LocalDateTime
+    - exitTime : LocalDateTime
+    - netFeePaid : BigDecimal
+    - active : boolean
+    + processExit(exit : LocalDateTime, rate : double, evRate : double) : void
+}
+
+enum PassType {
+    VISITOR
+    STUDENT_MONTHLY
+    STAFF_MONTHLY
+    VISITOR_ONE_DAY
+}
+
+class ParkingFacility {
+    - name : String
+    - grid : ParkingSlot[][]
+    - activeTicketsByReg : Map<String, ParkingTicket>
+    - activeTicketsById : Map<String, ParkingTicket>
+    - dailyTotalCollection : BigDecimal
+    + parkVehicle(v : Vehicle, pass : PassType, ev : boolean, entry : LocalDateTime) : ParkingTicket
+    + exitVehicle(id : String, exit : LocalDateTime) : ParkingTicket
+    + displayGrid() : void
+}
+
+ParkingFacility "1" *-- "many" ParkingSlot
+ParkingFacility "1" o-- "many" ParkingTicket
+ParkingSlot o-- "0..1" Vehicle
+ParkingTicket --> PassType
+@enduml

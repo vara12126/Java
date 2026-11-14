@@ -1,0 +1,20 @@
+@startuml 04_ParkingFacility_Class_Diagram
+skinparam classAttributeIconSize 0
+
+class ParkingFacility {
+    - name : String
+    - grid : ParkingSlot[][]
+    - activeTicketsByReg : Map<String, ParkingTicket>
+    - activeTicketsById : Map<String, ParkingTicket>
+    - settledTickets : List<ParkingTicket>
+    - dailyTotalCollection : BigDecimal
+    + ParkingFacility(name : String, capacities : int[], evSlots : int[])
+    + parkVehicle(v : Vehicle, pass : PassType, ev : boolean, in : LocalDateTime) : ParkingTicket
+    + exitVehicle(id : String, out : LocalDateTime) : ParkingTicket
+    + displayGrid() : void
+    + getActiveTicketsList() : List<ParkingTicket>
+    + getDailyTotalCollection() : BigDecimal
+    + getTotalAvailableSlots() : int
+    + getName() : String
+}
+@enduml
