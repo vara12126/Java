@@ -1,0 +1,9 @@
+=== TASK 03: TEST LOGS & RESIZING VERIFICATION ===
+Student: Devi Vara Prasad | Reg: 192365032
+
+[SEARCH] Query='Java', Category='Computer Science' -> Found 3 books:
+  - CS-101: Core Java Volume I – Fundamentals (Cay S. Horstmann) | Avail: true
+  - CS-102: Effective Java (3rd Edition) (Joshua Bloch) | Avail: true
+  - CS-103: Java: The Complete Reference (12th Ed) (Herbert Schildt) | Avail: false
+[RESERVE] Reserving CS-101 (Core Java) -> Success: true
+[RESERVE CONFLICT] Re-reserving CS-101 -> Correctly rejected: true
