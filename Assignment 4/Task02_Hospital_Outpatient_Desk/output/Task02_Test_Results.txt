@@ -1,0 +1,15 @@
+=== TASK 02: TEST LOGS & EXECUTION VERIFICATION ===
+Student: Devi Vara Prasad | Reg: 192365032
+
+[DEPT CHANGE] Cardiology -> Loaded 2 doctors: [Dr. A. R. Sharma (Interventional Cardiologist), Dr. Priya Sundaram (Electrophysiologist)]
+[DEPT CHANGE] Neurology -> Loaded 2 doctors: [Dr. Rajesh Venkat (Neurosurgeon), Dr. Sneha Nair (Pediatric Neurologist)]
+[DEPT CHANGE] Orthopedics -> Loaded 2 doctors: [Dr. Vikram Seth (Joint Replacement Specialist), Dr. Ananya Reddy (Spine Surgeon)]
+[DEPT CHANGE] Pediatrics -> Loaded 2 doctors: [Dr. Meera Krishnan (Neonatologist), Dr. Karthik Rao (Child Specialist)]
+[DEPT CHANGE] General Medicine -> Loaded 2 doctors: [Dr. Sunita Patel (Consultant Physician), Dr. Harish Kumar (Internal Medicine)]
+[PASS] Empty Patient ID successfully rejected: Patient ID is required.
+[PASS] Invalid Pattern PAT-XXXX successfully rejected: Patient ID must follow format 'PAT-XXXX' (e.g. PAT-1042).
+[APPOINTMENT CONFIRMED] ID: APT-1363 | Patient: PAT-1042 | Doctor: Dr. A. R. Sharma (Interventional Cardiologist) | Slot: 10:00 AM - 10:30 AM
+[PASS] Duplicate Slot Conflict successfully rejected: Time slot '10:00 AM - 10:30 AM' with Dr. A. R. Sharma (Interventional Cardiologist) is already booked! Please select another slot.
+[BENCHMARK] In-Memory Map Lookup Time: 0.00068 ms per department change
+[BENCHMARK] Database Network Query Alternative (Est.): 45.00 ms per department change
+[BENCHMARK] In-Memory Caching is ~66274x faster than direct DB queries!
