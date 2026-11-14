@@ -1,0 +1,51 @@
+================================================================================
+   ASSIGNMENT 3 - TASK 04: THREAD LIFECYCLE & SCHEDULING BENCHMARK               
+   Student A: Devi Vara Prasad | Reg: 192365032                                 
+   Student B: [Student B Name] | Reg: [Student B Register Number]               
+   Environment: Java SE 25.0.2 (Oracle Corporation) | Windows 11 64-bit         
+================================================================================
+
+PART 1: Thread.start() vs Runnable.run() Execution Context Verification
+--------------------------------------------------------------------------------
+[INVOCATION 1] Direct call to task.run():
+  -> Task executing inside Thread: [main] (Synchronous on caller thread)
+
+[INVOCATION 2] Spawning via thread.start():
+  -> Task executing inside Thread: [WorkerThread-Alpha] (Asynchronous OS Thread)
+
+PART 2: Thread State Transitions (NEW -> RUNNABLE -> TIMED_WAITING -> TERMINATED)
+--------------------------------------------------------------------------------
+[PHASE 1 - Pre-start] Thread: 'Lifecycle-Probe ' | State: NEW           | isAlive: false
+[PHASE 2 - Post-start] Thread: 'Lifecycle-Probe ' | State: RUNNABLE      | isAlive: true 
+[PHASE 3 - Sleeping] Thread: 'Lifecycle-Probe ' | State: TIMED_WAITING | isAlive: true 
+[PHASE 4 - Post-join] Thread: 'Lifecycle-Probe ' | State: TERMINATED    | isAlive: false
+
+PART 3: Multi-Thread Coordination using join() and isAlive() Guard
+--------------------------------------------------------------------------------
+Spawning all 3 statement workers in parallel...
+  Checking worker [StmtWorker-1] isAlive: true -> waiting on join()...
+  Worker [StmtWorker-1] joined! isAlive now: false
+  Checking worker [StmtWorker-2] isAlive: true -> waiting on join()...
+  Worker [StmtWorker-2] joined! isAlive now: false
+  Checking worker [StmtWorker-3] isAlive: true -> waiting on join()...
+  Worker [StmtWorker-3] joined! isAlive now: false
+[BARRIER PASSED] All worker threads terminated. Master audit summary generated.
+
+PART 4: 10 Experimental Runs - Thread Priority vs Non-Deterministic Scheduling
+--------------------------------------------------------------------------------
+Run #    | Finish 1st   | Finish 2nd   | Finish 3rd   | Finish 4th   | Finish 5th  
+--------------------------------------------------------------------------------
+Run #1    | W3(P5)       | W2(P3)       | W4(P7)       | W5(P10)      | W1(P1)      
+Run #2    | W2(P3)       | W1(P1)       | W5(P10)      | W4(P7)       | W3(P5)      
+Run #3    | W1(P1)       | W2(P3)       | W4(P7)       | W5(P10)      | W3(P5)      
+Run #4    | W1(P1)       | W2(P3)       | W5(P10)      | W4(P7)       | W3(P5)      
+Run #5    | W2(P3)       | W4(P7)       | W1(P1)       | W5(P10)      | W3(P5)      
+Run #6    | W2(P3)       | W4(P7)       | W3(P5)       | W1(P1)       | W5(P10)     
+Run #7    | W5(P10)      | W3(P5)       | W4(P7)       | W1(P1)       | W2(P3)      
+Run #8    | W5(P10)      | W3(P5)       | W1(P1)       | W2(P3)       | W4(P7)      
+Run #9    | W3(P5)       | W2(P3)       | W5(P10)      | W4(P7)       | W1(P1)      
+Run #10   | W3(P5)       | W5(P10)      | W4(P7)       | W2(P3)       | W1(P1)      
+[CSV EXPORT] Experimental run data successfully exported to Task04_Thread_Runs.csv
+Observation: Thread priorities are advisory hints. OS scheduling is non-deterministic.
+================================================================================
+[TASK 04 VERIFICATION COMPLETE] Lifecycle, coordination and scheduling verified.
