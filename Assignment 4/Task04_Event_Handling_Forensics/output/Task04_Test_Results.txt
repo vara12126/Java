@@ -1,0 +1,17 @@
+=== TASK 04: FORENSICS TEST LOGS & EXECUTION EVIDENCE ===
+Student: Devi Vara Prasad | Reg: 192365032
+
+DEFECT 1 (Method Typo): 'mouseclicked(MouseEvent e)' declared instead of 'mouseClicked(MouseEvent e)'.
+  -> Because MouseAdapter provides empty default implementations, compiler treats 'mouseclicked'
+     as a new user method. The AWT Event Multicaster never invokes it. Clicks are completely ignored.
+DEFECT 2 (Missing Label Update): 'status.setText(...)' was completely omitted from handler.
+DEFECT 3 (Transient Graphics): Using getGraphics() renders directly to current hardware frame buffer.
+  -> When window is minimized or covered, OS discards pixels. Upon restore, paint(Graphics g)
+     is called, which clears canvas. Without stored points in paint(), all dots are permanently lost!
+  [MOUSE CLICK DETECTED] Added Point at (80, 110) | Total Clicks: 1
+  [MOUSE CLICK DETECTED] Added Point at (160, 170) | Total Clicks: 2
+  [MOUSE CLICK DETECTED] Added Point at (230, 130) | Total Clicks: 3
+  [MOUSE CLICK DETECTED] Added Point at (300, 210) | Total Clicks: 4
+  [MOUSE CLICK DETECTED] Added Point at (350, 140) | Total Clicks: 5
+
+[VERIFICATION RESULT] Retained mode paint(Graphics g) successfully preserved all 5 dots after minimize/restore.
