@@ -1,0 +1,41 @@
+Run_Number,Implementation,Final_Balance,Balance_Error,Transaction_Count,Elapsed_Ms,Consistency_Status
+1,"1. Unsynchronized (Data Race)",-2800.00,12800.00,15498,2.958,CORRUPTED
+2,"1. Unsynchronized (Data Race)",10000.00,0.00,20000,2.015,PASSED
+3,"1. Unsynchronized (Data Race)",10000.00,0.00,20000,3.137,PASSED
+4,"1. Unsynchronized (Data Race)",10000.00,0.00,20000,1.972,PASSED
+5,"1. Unsynchronized (Data Race)",10000.00,0.00,20000,1.656,PASSED
+6,"1. Unsynchronized (Data Race)",10000.00,0.00,20000,1.646,PASSED
+7,"1. Unsynchronized (Data Race)",10000.00,0.00,20000,1.117,PASSED
+8,"1. Unsynchronized (Data Race)",10000.00,0.00,20000,1.776,PASSED
+9,"1. Unsynchronized (Data Race)",10000.00,0.00,20000,1.597,PASSED
+10,"1. Unsynchronized (Data Race)",10000.00,0.00,20000,1.062,PASSED
+1,"2. Synchronized Method (Intrinsic Lock)",10000.00,0.00,20000,3.282,PASSED
+2,"2. Synchronized Method (Intrinsic Lock)",10000.00,0.00,20000,2.638,PASSED
+3,"2. Synchronized Method (Intrinsic Lock)",10000.00,0.00,20000,1.514,PASSED
+4,"2. Synchronized Method (Intrinsic Lock)",10000.00,0.00,20000,1.604,PASSED
+5,"2. Synchronized Method (Intrinsic Lock)",10000.00,0.00,20000,1.301,PASSED
+6,"2. Synchronized Method (Intrinsic Lock)",10000.00,0.00,20000,2.203,PASSED
+7,"2. Synchronized Method (Intrinsic Lock)",10000.00,0.00,20000,1.489,PASSED
+8,"2. Synchronized Method (Intrinsic Lock)",10000.00,0.00,20000,1.078,PASSED
+9,"2. Synchronized Method (Intrinsic Lock)",10000.00,0.00,20000,1.367,PASSED
+10,"2. Synchronized Method (Intrinsic Lock)",10000.00,0.00,20000,1.237,PASSED
+1,"3. Synchronized Block (Fine-Grained Lock)",10000.00,0.00,20000,2.154,PASSED
+2,"3. Synchronized Block (Fine-Grained Lock)",10000.00,0.00,20000,1.967,PASSED
+3,"3. Synchronized Block (Fine-Grained Lock)",10000.00,0.00,20000,1.414,PASSED
+4,"3. Synchronized Block (Fine-Grained Lock)",10000.00,0.00,20000,7.472,PASSED
+5,"3. Synchronized Block (Fine-Grained Lock)",10000.00,0.00,20000,1.496,PASSED
+6,"3. Synchronized Block (Fine-Grained Lock)",10000.00,0.00,20000,1.305,PASSED
+7,"3. Synchronized Block (Fine-Grained Lock)",10000.00,0.00,20000,1.036,PASSED
+8,"3. Synchronized Block (Fine-Grained Lock)",10000.00,0.00,20000,1.851,PASSED
+9,"3. Synchronized Block (Fine-Grained Lock)",10000.00,0.00,20000,2.853,PASSED
+10,"3. Synchronized Block (Fine-Grained Lock)",10000.00,0.00,20000,1.716,PASSED
+1,"4. Atomic Lock-Free (CAS Hardware Operations)",10000.00,0.00,20000,2.017,PASSED
+2,"4. Atomic Lock-Free (CAS Hardware Operations)",10000.00,0.00,20000,2.694,PASSED
+3,"4. Atomic Lock-Free (CAS Hardware Operations)",10000.00,0.00,20000,1.591,PASSED
+4,"4. Atomic Lock-Free (CAS Hardware Operations)",10000.00,0.00,20000,2.106,PASSED
+5,"4. Atomic Lock-Free (CAS Hardware Operations)",10000.00,0.00,20000,1.149,PASSED
+6,"4. Atomic Lock-Free (CAS Hardware Operations)",10000.00,0.00,20000,1.872,PASSED
+7,"4. Atomic Lock-Free (CAS Hardware Operations)",10000.00,0.00,20000,1.314,PASSED
+8,"4. Atomic Lock-Free (CAS Hardware Operations)",10000.00,0.00,20000,1.097,PASSED
+9,"4. Atomic Lock-Free (CAS Hardware Operations)",10000.00,0.00,20000,1.918,PASSED
+10,"4. Atomic Lock-Free (CAS Hardware Operations)",10000.00,0.00,20000,2.203,PASSED
