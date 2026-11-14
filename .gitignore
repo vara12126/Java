@@ -1,0 +1,19 @@
+# Byte-compiled / binary files
+*.class
+
+# Package Files
+*.jar
+*.war
+*.ear
+
+# Virtual machines and crash logs
+*.log
+hs_err_pid*
+
+# IDE settings
+.idea/
+*.iml
+.vscode/
+.settings/
+.project
+.classpath
