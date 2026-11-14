@@ -1,0 +1,10 @@
+=== TASK 01: TEST LOGS & EXECUTION VERIFICATION ===
+Student: Devi Vara Prasad | Reg: 192365032
+
+[PASS] Empty RegNo Check correctly caught: Register Number cannot be empty.
+[PASS] Empty Amount Check correctly caught: Fee Amount cannot be empty.
+[PASS] Non-numeric Amount Check correctly caught: Invalid fee amount format. Please enter a valid decimal number.
+[PASS] Negative Amount Check correctly caught: Fee Amount must be strictly positive.
+[PASS] Exceeds Max Cap Check correctly caught: Fee Amount exceeds maximum single-transaction limit of ₹5,00,000.
+[PAYMENT SUCCESS] Reg: 192365032 | Amount: ₹45000.00 | Ref: TXN-1794658920963-415 | Status: Payment Successful
+[RECEIPT VERIFIED] Latest receipt found for 192365032: Amount ₹45000.00 at 2026-11-14T17:52:01.034806100
