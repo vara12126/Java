@@ -1,0 +1,46 @@
+Strategy,TicketCount,FieldsPerTicket,RunIndex,ExecutionTimeMs,EstimatedIntermediateObjects,MemoryUsedBytes
+"String Concatenation (+)",100,50,1,7.7381,15000,643056
+"String Concatenation (+)",100,50,2,10.1752,15000,1755136
+"String Concatenation (+)",100,50,3,4.4008,15000,495816
+"String Concatenation (+)",100,50,4,5.0422,15000,1416416
+"String Concatenation (+)",100,50,5,6.0246,15000,3665208
+"StringBuilder (Unsynchronized)",100,50,1,2.3688,100,0
+"StringBuilder (Unsynchronized)",100,50,2,1.7027,100,553040
+"StringBuilder (Unsynchronized)",100,50,3,1.2935,100,553040
+"StringBuilder (Unsynchronized)",100,50,4,1.1128,100,553040
+"StringBuilder (Unsynchronized)",100,50,5,0.6404,100,553040
+"StringBuffer (Synchronized)",100,50,1,1.8223,100,553040
+"StringBuffer (Synchronized)",100,50,2,2.5446,100,553040
+"StringBuffer (Synchronized)",100,50,3,1.6555,100,553040
+"StringBuffer (Synchronized)",100,50,4,1.9669,100,553040
+"StringBuffer (Synchronized)",100,50,5,1.7230,100,553040
+"String Concatenation (+)",1000,50,1,86.9772,150000,71515720
+"String Concatenation (+)",1000,50,2,33.0768,150000,50408032
+"String Concatenation (+)",1000,50,3,18.4167,150000,31877648
+"String Concatenation (+)",1000,50,4,24.9109,150000,31879640
+"String Concatenation (+)",1000,50,5,31.8091,150000,31878896
+"StringBuilder (Unsynchronized)",1000,50,1,10.0415,1000,5242880
+"StringBuilder (Unsynchronized)",1000,50,2,11.2025,1000,6040872
+"StringBuilder (Unsynchronized)",1000,50,3,6.4308,1000,6293320
+"StringBuilder (Unsynchronized)",1000,50,4,5.8737,1000,6139376
+"StringBuilder (Unsynchronized)",1000,50,5,5.6775,1000,6134616
+"StringBuffer (Synchronized)",1000,50,1,6.5849,1000,6120720
+"StringBuffer (Synchronized)",1000,50,2,6.9351,1000,6129480
+"StringBuffer (Synchronized)",1000,50,3,6.6040,1000,6128184
+"StringBuffer (Synchronized)",1000,50,4,4.8466,1000,6127344
+"StringBuffer (Synchronized)",1000,50,5,5.0701,1000,6126800
+"String Concatenation (+)",10000,50,1,322.5273,1500000,133178600
+"String Concatenation (+)",10000,50,2,305.6907,1500000,78649392
+"String Concatenation (+)",10000,50,3,276.7642,1500000,76556368
+"String Concatenation (+)",10000,50,4,334.1155,1500000,39854144
+"String Concatenation (+)",10000,50,5,406.5577,1500000,76556368
+"StringBuilder (Unsynchronized)",10000,50,1,66.1365,10000,4786320
+"StringBuilder (Unsynchronized)",10000,50,2,65.7407,10000,4784400
+"StringBuilder (Unsynchronized)",10000,50,3,69.9020,10000,11753096
+"StringBuilder (Unsynchronized)",10000,50,4,63.2616,10000,13382960
+"StringBuilder (Unsynchronized)",10000,50,5,61.5579,10000,13925464
+"StringBuffer (Synchronized)",10000,50,1,69.6657,10000,4782312
+"StringBuffer (Synchronized)",10000,50,2,76.7991,10000,13848536
+"StringBuffer (Synchronized)",10000,50,3,68.9718,10000,4785336
+"StringBuffer (Synchronized)",10000,50,4,71.3076,10000,13849272
+"StringBuffer (Synchronized)",10000,50,5,74.7401,10000,4786200
