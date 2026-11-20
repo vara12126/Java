@@ -1,0 +1,4 @@
+record_count,statement_time_ms,prepared_stmt_time_ms,batch_time_ms,batch_speedup_vs_stmt,batch_speedup_vs_ps
+1000,3362,3048,82,41.00,37.17
+10000,24006,24079,398,60.32,60.50
+100000,280000,220000,2989,93.68,73.60

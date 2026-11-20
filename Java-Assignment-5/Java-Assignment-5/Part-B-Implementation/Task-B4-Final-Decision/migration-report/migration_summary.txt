@@ -1,0 +1,15 @@
+================================================================================
+                 UNIVERSITY BUS-PASS DATA MIGRATION REPORT                      
+================================================================================
+Migration Date:         Thu Nov 19 09:00:14 IST 2026
+Source File:            C:\Users\Dhanush\AppData\Local\Temp\migration_input_sample12910655079820528112.csv
+Target Database:        MySQL (assignment5_testdb.bus_pass)
+Execution Duration:     703 ms
+--------------------------------------------------------------------------------
+Total Lines Processed:  35
+Valid Passes Migrated:  30 (85.71%)
+Invalid Lines Rejected: 5 (14.29%)
+--------------------------------------------------------------------------------
+Detailed Failure Audit: C:\Users\Dhanush\OneDrive\Documents\Assignment 5-java\Java-Assignment-5\Part-B-Implementation\Task-B4-Final-Decision\migration-report\failed_records.csv
+Integrity Status:       TRANSACTION COMMITTED ATOMICALLY
+================================================================================

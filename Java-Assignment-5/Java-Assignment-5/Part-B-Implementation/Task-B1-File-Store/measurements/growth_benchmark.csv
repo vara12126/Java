@@ -1,0 +1,4 @@
+record_count,file_size_bytes,linear_scan_head_ms,linear_scan_mid_ms,linear_scan_tail_ms,linear_scan_notfound_ms,hashmap_load_ms,hashmap_lookup_ns
+1000,43533,6.6990,2.1624,2.2361,2.0855,3.2189,29900
+10000,445294,12.7185,7.6319,13.7531,11.3104,16.0239,5800
+100000,4552895,49.6956,22.6549,44.3424,32.4348,59.9543,8700

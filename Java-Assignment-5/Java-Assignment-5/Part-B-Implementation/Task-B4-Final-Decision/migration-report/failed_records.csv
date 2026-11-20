@@ -1,0 +1,6 @@
+line_number,raw_record,failure_reason
+21,"MIG_P9001,DAMAGED_RECORD_LESS_TOKENS",Wrong number of fields (Expected 5, Got 2)
+22,"MIG_P9002,192311902,Sita,ROUTE_TEN,4200.0",Invalid route number: ROUTE_TEN
+23,"[EMPTY_LINE]",Line is blank or empty
+24,"MIG_P9003,192311903,Gita,8,-500.0",Invalid monetary amount: -500.0
+25,"MIG_P9004,192311904,Ravi,12,FREE_STUDENT",Invalid monetary amount: FREE_STUDENT

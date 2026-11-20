@@ -1,0 +1,4 @@
+file_size_mb,file_size_bytes,unbuffered_time_ms,buffered_stream_time_ms,buffered_reader_time_ms,speedup_factor
+1,1048645,4507,22,34,204.86
+10,10485793,29946,132,60,226.86
+50,52428819,151731,630,127,240.84

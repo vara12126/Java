@@ -1,0 +1,53 @@
+================================================================================
+           DATABASE METADATA RUNTIME INSPECTION (DatabaseMetaData)              
+================================================================================
+
+--- [1] DATABASE PRODUCT INFORMATION ---
+   Database Product Name:      MySQL
+   Database Product Version:   8.0.43
+   Database Major Version:     8
+   Database Minor Version:     0
+
+--- [2] JDBC DRIVER SPECIFICATION ---
+   JDBC Driver Name:           MySQL Connector/J
+   JDBC Driver Version:        mysql-connector-j-26.10.0 (Revision: fac9201148ebe3f84a5754cb86ebbacaf1cdce7f)
+   JDBC Driver Major Version:  26
+   JDBC Driver Minor Version:  10
+   JDBC Specification Compl.:  4.2
+
+--- [3] CONNECTION & TRANSACTION CAPABILITIES ---
+   Connection URL:             jdbc:mysql://localhost:3306/assignment5_testdb?createDatabaseIfNotExist=true&useSSL=false&allowPublicKeyRetrieval=true
+   Connected User:             root@localhost
+   Supports Transactions:      YES
+   Supports Batch Updates:     YES
+   Supports Savepoints:        YES
+   Max Connections Allowed:    0
+
+--- [4] DATABASE TABLES PRESENT IN SCHEMA 'assignment5_testdb' ---
+   [TABLE] bus_pass             | Type: TABLE
+   [TABLE] users                | Type: TABLE
+
+--- [5] COLUMN DEFINITIONS & CONSTRAINTS PER TABLE ---
+
+   Table: bus_pass
+      - Column: pass_id         | Type: VARCHAR      | Size: 20    | Nullable: NO
+      - Column: reg_no          | Type: VARCHAR      | Size: 20    | Nullable: NO
+      - Column: name            | Type: VARCHAR      | Size: 50    | Nullable: NO
+      - Column: route_no        | Type: INT          | Size: 10    | Nullable: NO
+      - Column: amount          | Type: DOUBLE       | Size: 22    | Nullable: NO
+
+   Table: users
+      - Column: id              | Type: VARCHAR      | Size: 50    | Nullable: NO
+      - Column: pwd             | Type: VARCHAR      | Size: 100   | Nullable: NO
+      - Column: full_name       | Type: VARCHAR      | Size: 100   | Nullable: NO
+      - Column: role            | Type: VARCHAR      | Size: 30    | Nullable: NO
+
+================================================================================
+   METADATA UTILITY EXPLANATION: WHY IS THIS VITAL DURING SERVER MIGRATIONS?    
+================================================================================
+1. Dynamic Capability Verification: Verifies whether the production database engine
+   supports ACID transactions, batch updates, and specific SQL ANSI dialects before executing.
+2. Schema Drift Detection: Automatically inspects column names, types, and constraints to ensure
+   the target server matches the application's Object-Relational schema expectations.
+3. Version Compatibility: Warns developers if deprecated JDBC features or engine version
+   mismatches exist between staging and production environments without manual DBA queries.
